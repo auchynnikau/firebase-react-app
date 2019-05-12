@@ -1,9 +1,6 @@
 import * as React from 'react';
 
-import {
-  CarouselComponent,
-  NavbarComponent,
-} from '../../components';
+import { CarouselComponent } from '../../components';
 
 export const Landing = () => {
   return (

@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { Link } from 'react-router-dom';
 import { Navbar, Nav, Form } from 'react-bootstrap';
 
 import { SignedInLinks } from './SignedInLinks';
@@ -9,7 +10,7 @@ import './Navbar.scss';
 export const NavbarComponent = () => {
   return (
     <Navbar className='navbar navbar--style' collapseOnSelect expand='lg' variant='dark'>
-      <Navbar.Brand className='navbar__brand brand brand--style' href='#'>
+      <Navbar.Brand as={ Link } to='/' className='navbar__brand brand brand--style'>
         Some title
       </Navbar.Brand>
       <Navbar.Toggle
@@ -22,10 +23,34 @@ export const NavbarComponent = () => {
       >
         <div className='collapse__container'>
           <Nav className='navbar__nav nav nav--style'>
-            <Nav.Link className='nav__link link link--style'>На главную</Nav.Link>
-            <Nav.Link className='nav__link link link--style'>Города</Nav.Link>
-            <Nav.Link className='nav__link link link--style'>Достопримечательности</Nav.Link>
-            <Nav.Link className='nav__link link link--style'>О сайте</Nav.Link>
+            <Nav.Link
+              as={ Link }
+              to='/'
+              className='nav__link link link--style'
+            >
+              На главную
+            </Nav.Link>
+            <Nav.Link
+              as={ Link }
+              to='/cities'
+              className='nav__link link link--style'
+            >
+              Города
+            </Nav.Link>
+            <Nav.Link
+              as={ Link }
+              to='/sightseeings'
+              className='nav__link link link--style'
+            >
+              Достопримечательности
+            </Nav.Link>
+            <Nav.Link
+              as={ Link }
+              to='/about'
+              className='nav__link link link--style'
+            >
+              О сайте
+            </Nav.Link>
           </Nav>
           <Form className='navbar__form form form--style'>
             <SignedInLinks />
