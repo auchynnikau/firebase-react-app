@@ -1,13 +1,18 @@
-import React from 'react';
+import * as React from 'react';
+import { BrowserRouter } from 'react-router-dom';
 
-function App() {
+import {
+  CarouselComponent,
+  NavbarComponent,
+} from './components';
+
+import './App.scss';
+
+export const App = () => {
   return (
-    <div className="App">
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-    </div>
+    <BrowserRouter>
+      <CarouselComponent />
+      <NavbarComponent />
+    </BrowserRouter>
   );
 }
-
-export default App;

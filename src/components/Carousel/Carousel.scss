@@ -1,0 +1,62 @@
+@import '../../styles/settings.scss';
+
+.carousel {
+  .item {
+    width: 100%;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+
+    &--background {
+      background-size: cover;
+      background-repeat: no-repeat;
+      background-position: 50% 50%;
+    }
+  }
+
+  .caption {
+    display: flex;
+    justify-content: flex-start;
+    bottom: 10%;
+
+    .container {
+      height: min-content;
+      width: 75%;
+      margin: 0;
+
+      &--style {
+        background: $shaded-background;
+        text-align: left;
+      }
+    }
+  }
+
+  .heading {
+    &--style {
+      font-family: $segoe-ui;
+      font-size: $large-font;
+      font-weight: 600;
+      color: $white;
+    }
+
+    &--second-style {
+      font-family: $segoe-ui;
+      font-size: $medium-font;
+      color: $gray;
+    }
+  }
+
+  .description {
+    &--style {
+      font-family: $segoe-ui;
+      font-size: $small-font;
+      color: $white;
+    }
+  }
+
+  &__first-item  { background: url('../../assets/carousel-bg/1.jpg'); }
+  &__second-item { background: url('../../assets/carousel-bg/2.jpg'); }
+  &__third-item  { background: url('../../assets/carousel-bg/3.jpg'); }
+  &__fourth-item { background: url('../../assets/carousel-bg/4.jpg'); }
+  &__fifth-item  { background: url('../../assets/carousel-bg/5.jpg'); }
+}
