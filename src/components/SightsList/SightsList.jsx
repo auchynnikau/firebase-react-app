@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { CardColumns } from 'react-bootstrap';
 
-import { SightCard } from '../SightsCard';
+import { SightCard } from '../SightCard';
 
 export const SightsList = ({sights}) => {
   

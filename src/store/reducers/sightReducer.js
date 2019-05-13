@@ -22,5 +22,11 @@ const initState = {
 }
 
 export const sightReducer = (state = initState, action) => {
-  return state;
-}
+  switch (action.type) {
+    case 'ADD_SIGHT':
+      console.log('add sight', action.project);
+      return state;
+    default: 
+      return state;
+  }
+};
