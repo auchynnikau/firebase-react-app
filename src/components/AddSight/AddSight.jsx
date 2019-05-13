@@ -3,7 +3,7 @@ import { Modal, Button, Form } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { addSight } from '../../store/actions/sightActions';
 
-export class AddSight extends React.Component {
+class AddSight extends React.Component {
   constructor(props) {
     super(props);
 
@@ -79,4 +79,4 @@ const mapDispatchToProps = dispatch => {
   }
 }
 
-connect(null, mapDispatchToProps)(AddSight);
+export default connect(null, mapDispatchToProps)(AddSight);
