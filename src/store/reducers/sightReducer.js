@@ -26,7 +26,10 @@ export const sightReducer = (state = initState, action) => {
     case 'ADD_SIGHT':
       console.log('add sight', action.project);
       return state;
-    default: 
+    case 'ADD_SIGHT_ERROR':
+      console.log('add sight error', action.error);
+      return state;
+    default:
       return state;
   }
 };

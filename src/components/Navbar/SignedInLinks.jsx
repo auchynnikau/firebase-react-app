@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Nav } from 'react-bootstrap';
 
-import { AddSight } from '../AddSight';
+import AddSight from '../AddSight/AddSight';
 import './Navbar.scss';
 
 export class SignedInLinks extends React.Component {
