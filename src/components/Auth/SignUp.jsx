@@ -1,7 +1,9 @@
 import * as React from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
+import { signUp } from '../../store/actions/authActions';
+import { connect } from 'react-redux';
 
-export class SignUp extends React.Component {
+class SignUp extends React.Component {
   constructor(props) {
     super(props);
 
@@ -27,15 +29,18 @@ export class SignUp extends React.Component {
     })
   }
 
-  handleSubmit = () => {
-    console.log(this.state);
+  handleSubmit = (event) => {
+    event.preventDefault();
+    this.props.signUp(this.state);
   }
 
   render() {
+    const { authError } = this.props;
+
     return (
       <Modal show={this.props.isShown} onHide={this.props.handleClose}>
         <Modal.Header closeButton>
-          <Modal.Title>Вход</Modal.Title>
+          <Modal.Title>Регистрация</Modal.Title>
         </Modal.Header>
         <Modal.Body>
           <Form>
@@ -86,10 +91,25 @@ export class SignUp extends React.Component {
             Закрыть
           </Button>
           <Button variant='success' onClick={this.handleSubmit}>
-            Войти
+            Зарегистрироваться
           </Button>
+          { authError ? <p>{ authError }</p> : null }
         </Modal.Footer>
       </Modal>
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    authError: state.auth.authError
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    signUp: (newUser) => dispatch(signUp(newUser))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SignUp);

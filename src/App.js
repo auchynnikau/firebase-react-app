@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-import { NavbarComponent } from './components';
+import NavbarComponent from './components/Navbar/Navbar';
 import SightInfo from './components/SightInfo/SightInfo';
 import { Landing } from './pages';
 import Dashboard from './pages/Dashboard/Dashboard';
