@@ -39,7 +39,7 @@ export const NavbarComponent = () => {
             </Nav.Link>
             <Nav.Link
               as={ Link }
-              to='/sightseeings'
+              to='/sights'
               className='nav__link link link--style'
             >
               Достопримечательности
