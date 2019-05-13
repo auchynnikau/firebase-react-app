@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
-import { NavbarComponent, SightseeingInfoComponent, SightseeingListComponent } from './components';
+import { NavbarComponent, SightInfo } from './components';
 import { Landing } from './pages';
-
+import Dashboard from './pages/Dashboard/Dashboard';
 import './App.scss';
 
 export const App = () => {
@@ -12,8 +12,8 @@ export const App = () => {
       <NavbarComponent />
       <Switch>
         <Route exact path='/' component={ Landing } />
-        <Route exact path='/sightseeings' component={ SightseeingListComponent } />
-        <Route path='/sightseeings/:id' component={ SightseeingInfoComponent } />
+        <Route exact path='/sights' component={ Dashboard } />
+        <Route path='/sights/:id' component={ SightInfo } />
       </Switch>
     </BrowserRouter>
   );

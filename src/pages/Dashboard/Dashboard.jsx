@@ -1,13 +1,24 @@
 import * as React from 'react';
+import { connect } from 'react-redux';
 
-import { SightseeingListComponent } from '../../components';
+import { SightsList } from '../../components';
 
-export class Dashboard extends React.Component {
+class Dashboard extends React.Component {
   render() {
+    const { sights } = this.props;
+
     return (
       <React.Fragment>
-        <SightseeingListComponent />
+        <SightsList sights={ sights } />
       </React.Fragment>
     );
   }
 }
+
+const mapStateToProps = (state) => {
+  return {
+    sights: state.sight.sights
+  }
+}
+
+export default connect(mapStateToProps)(Dashboard);

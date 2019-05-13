@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-export const SightseeingInfoComponent = (props) => {
+export const SightInfo = (props) => {
   const id = props.match.params.id;
 
   return (
