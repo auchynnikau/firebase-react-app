@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Nav, Button } from 'react-bootstrap';
 
-import { SignIn, SignUp } from '../Auth';
-
+import SignUp from '../Auth/SignUp';
+import SignIn from '../Auth/SignIn';
 import './Navbar.scss';
 
 export class SignedOutLinks extends React.Component {

@@ -1,10 +1,11 @@
 import * as React from 'react';
-import { Nav } from 'react-bootstrap';
-
+import { Nav, Button } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { signOut } from '../../store/actions/authActions';
 import AddSight from '../AddSight/AddSight';
 import './Navbar.scss';
 
-export class SignedInLinks extends React.Component {
+class SignedInLinks extends React.Component {
   constructor(props) {
     super(props);
 
@@ -22,9 +23,11 @@ export class SignedInLinks extends React.Component {
   render() {
     return (
       <Nav>
-        <Nav.Link onClick={ this.addSightShow } className='nav__link link link--style'>Добавить</Nav.Link>
-        <Nav.Link className='nav__link link link--style'>Выйти</Nav.Link>
-        <Nav.Link className='nav__link link link--style'>ИИ</Nav.Link>
+        <Button variant='outline-info' onClick={ this.addSightShow } className='nav__link link link--style'>Добавить</Button>
+        <Button variant='outline-success' onClick={ this.props.signOut } className='nav__link link link--style'>Выйти</Button>
+        <Nav.Link className='nav__link link link--style'>
+          { this.props.profile.initials }
+        </Nav.Link>
         <AddSight
           isShown={ this.state.addSightShown }
           handleShow={ this.addSightShow }
@@ -34,3 +37,11 @@ export class SignedInLinks extends React.Component {
     );
   }
 }
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    signOut: () => dispatch(signOut())
+  }
+}
+
+export default connect(null, mapDispatchToProps)(SignedInLinks);

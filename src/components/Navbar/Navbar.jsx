@@ -2,12 +2,17 @@ import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Nav, Form } from 'react-bootstrap';
 
-import { SignedInLinks } from './SignedInLinks';
+import SignedInLinks from './SignedInLinks';
 import { SignedOutLinks } from './SignedOutLinks';
+import { connect } from 'react-redux';
 
 import './Navbar.scss';
 
-export const NavbarComponent = () => {
+const NavbarComponent = (props) => {
+  const { auth, profile } = props;
+  console.log(profile);
+  const links = auth.uid ? <SignedInLinks profile={ profile } /> : <SignedOutLinks />;
+
   return (
     <Navbar className='navbar navbar--style' collapseOnSelect expand='lg' variant='dark'>
       <Navbar.Brand as={ Link } to='/' className='navbar__brand brand brand--style'>
@@ -53,11 +58,19 @@ export const NavbarComponent = () => {
             </Nav.Link>
           </Nav>
           <Form className='navbar__form form form--style'>
-            <SignedInLinks />
-            <SignedOutLinks />
+            { links }
           </Form>
         </div>
       </Navbar.Collapse>
     </Navbar>
   );
 }
+
+const mapStateToProps = (state) => {
+  return {
+    auth: state.firebase.auth,
+    profile: state.firebase.profile,
+  }
+}
+
+export default connect(mapStateToProps)(NavbarComponent);

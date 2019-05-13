@@ -3,10 +3,12 @@ import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
 import { SightsList } from '../../components';
-
+import { Redirect } from 'react-router-dom';
 class Dashboard extends React.Component {
   render() {
-    const { sights } = this.props;
+    const { sights, auth } = this.props;
+
+    // if (!auth.uid) return <Redirect to='/' />
 
     return (
       <React.Fragment>
@@ -18,7 +20,8 @@ class Dashboard extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-    sights: state.firestore.ordered.sights
+    sights: state.firestore.ordered.sights,
+    auth: state.firebase.auth,
   }
 }
 

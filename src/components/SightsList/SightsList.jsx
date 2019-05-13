@@ -9,8 +9,8 @@ export const SightsList = ({sights}) => {
     <CardColumns>
       {sights && sights.map(sight => {
         return (
-          <Link to={ '/sights/' + sight.id }>
-            <SightCard key={ sight.id } sight={ sight } />
+          <Link key={ sight.id } to={ '/sights/' + sight.id }>
+            <SightCard sight={ sight } />
           </Link>
         )
       })}
