@@ -1,5 +1,7 @@
 import * as React from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
+import { connect } from 'react-redux';
+import { addSight } from '../../store/actions/sightActions';
 
 export class AddSight extends React.Component {
   constructor(props) {
@@ -23,8 +25,9 @@ export class AddSight extends React.Component {
     })
   }
 
-  handleSubmit = () => {
-    console.log(this.state);
+  handleSubmit = (event) => {
+    event.preventDefault();
+    this.props.addSight(this.state);
   }
 
   render() {
@@ -69,3 +72,11 @@ export class AddSight extends React.Component {
     );
   }
 }
+
+const mapDispatchToProps = dispatch => {
+  return {
+    addSight: (sight) => dispatch(addSight(sight))
+  }
+}
+
+connect(null, mapDispatchToProps)(AddSight);

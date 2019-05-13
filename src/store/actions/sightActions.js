@@ -1,5 +1,5 @@
-export const createSight = (sight) => {
+export const addSight = (sight) => {
   return (dispatch, getState) => {
-    dispatch({ type: 'CREATE_SIGHT', sight })
+    dispatch({ type: 'ADD_SIGHT', sight })
   }
-}
+};
