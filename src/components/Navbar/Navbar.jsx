@@ -1,14 +1,13 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
 import { Navbar, Nav, Form } from 'react-bootstrap';
-
 import SignedInLinks from './SignedInLinks';
 import { SignedOutLinks } from './SignedOutLinks';
 import { connect } from 'react-redux';
 
 import './Navbar.scss';
 
-const NavbarComponent = (props) => {
+export const NavbarComponent = (props) => {
   const { auth, profile } = props;
   console.log(profile);
   const links = auth.uid ? <SignedInLinks profile={ profile } /> : <SignedOutLinks />;

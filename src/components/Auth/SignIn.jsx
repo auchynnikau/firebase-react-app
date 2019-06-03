@@ -2,8 +2,9 @@ import * as React from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { signIn } from '../../store/actions/authActions';
+import { Alert } from 'react-bootstrap';
 
-class SignIn extends React.Component {
+export class SignIn extends React.Component {
   constructor(props) {
     super(props);
 
@@ -25,7 +26,7 @@ class SignIn extends React.Component {
     })
   }
 
-  handleSubmit = (event) => {
+  handleSubmit(event) {
     event.preventDefault();
     this.props.signIn(this.state);
   }
@@ -33,6 +34,7 @@ class SignIn extends React.Component {
   render() {
     const { authError } = this.props;
 
+    console.log(this.props);
     return (
       <Modal show={this.props.isShown} onHide={this.props.handleClose}>
         <Modal.Header closeButton>
@@ -60,6 +62,7 @@ class SignIn extends React.Component {
                 placeholder='Введите пароль'
               />
             </Form.Group>
+            { authError && <Alert variant='danger'>Неверный пароль!</Alert> }
           </Form>
         </Modal.Body>
         <Modal.Footer>
@@ -69,7 +72,6 @@ class SignIn extends React.Component {
           <Button variant='success' onClick={this.handleSubmit}>
             Войти
           </Button>
-          <div>{ authError ? <p>{authError}</p>: null}</div>
         </Modal.Footer>
       </Modal>
     );

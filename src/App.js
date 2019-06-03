@@ -1,10 +1,12 @@
 import * as React from 'react';
 import { BrowserRouter, Switch, Route } from 'react-router-dom';
 
+import { Landing } from './pages/Landing/Landing';
+import  Dashboard  from './pages/Dashboard/Dashboard';
+
 import NavbarComponent from './components/Navbar/Navbar';
 import SightInfo from './components/SightInfo/SightInfo';
-import { Landing } from './pages';
-import Dashboard from './pages/Dashboard/Dashboard';
+
 import './App.scss';
 
 export const App = () => {

@@ -1,15 +1,14 @@
 import * as React from 'react';
 import { Card } from 'react-bootstrap';
-
-import './SightCard'
+import './SightCard.scss';
 
 export const SightCard = ({sight}) => {
   return (
-    <Card>
-      <Card.Img variant="top" src="holder.js/100px160" />
-      <Card.Body>
-        <Card.Title>{sight.title}</Card.Title>
-        <Card.Text>{sight.content}</Card.Text>
+    <Card className='sight-card sight-card--style'>
+      <Card.Img className='sight-card__img' variant="top" src={sight.image} />
+      <Card.Body className='sight-card__body'>
+        <Card.Title className='sight-card__title title title--style'>{sight.title}</Card.Title>
+        <Card.Text className='sight-card__text text text--style'>{sight.description}</Card.Text>
       </Card.Body>
     </Card>
   );

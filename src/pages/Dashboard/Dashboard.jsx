@@ -1,14 +1,13 @@
 import * as React from 'react';
+import { compose } from 'redux';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
-import { compose } from 'redux';
-import { SightsList } from '../../components';
-import { Redirect } from 'react-router-dom';
-class Dashboard extends React.Component {
-  render() {
-    const { sights, auth } = this.props;
 
-    // if (!auth.uid) return <Redirect to='/' />
+import { SightsList } from '../../components/SightsList/SightsList';
+
+export class Dashboard extends React.Component {
+  render() {
+    const { sights } = this.props;
 
     return (
       <React.Fragment>
@@ -27,7 +26,5 @@ const mapStateToProps = (state) => {
 
 export default compose(
   connect(mapStateToProps),
-  firestoreConnect([
-    { collection: 'sights' },
-  ]),
+  firestoreConnect([{ collection: 'sights' }]),
 )(Dashboard);

@@ -3,17 +3,20 @@ import { Modal, Button, Form } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { addSight } from '../../store/actions/sightActions';
 
-class AddSight extends React.Component {
+export class AddSight extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
       title: '',
       content: '',
+      image: '',
     };
 
     this.titleInput = React.createRef();
     this.contentInput = React.createRef();
+    this.imageInput = React.createRef();
+
 
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -56,6 +59,16 @@ class AddSight extends React.Component {
                 ref={this.contentInput}
                 onChange={this.handleChange}
                 placeholder='Введите описание'
+              />
+            </Form.Group>
+            <Form.Group>
+              <Form.Label>Изображение</Form.Label>
+              <Form.Control
+                id='image'
+                type='text'
+                ref={this.imageInput}
+                onChange={this.handleChange}
+                placeholder='Укажите адрес изображения'
               />
             </Form.Group>
           </Form>

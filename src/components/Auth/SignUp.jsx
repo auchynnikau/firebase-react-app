@@ -2,8 +2,9 @@ import * as React from 'react';
 import { Modal, Button, Form } from 'react-bootstrap';
 import { signUp } from '../../store/actions/authActions';
 import { connect } from 'react-redux';
+import { Tooltip, Overlay } from 'react-bootstrap';
 
-class SignUp extends React.Component {
+export class SignUp extends React.Component {
   constructor(props) {
     super(props);
 
@@ -30,6 +31,7 @@ class SignUp extends React.Component {
   }
 
   handleSubmit = (event) => {
+    console.log(this.props)
     event.preventDefault();
     this.props.signUp(this.state);
   }
@@ -81,7 +83,7 @@ class SignUp extends React.Component {
                 type='password'
                 ref={this.passwordInput}
                 onChange={this.handleChange}
-                placeholder='Введите пароль'
+                placeholder='Придумайте пароль'
               />
             </Form.Group>
           </Form>
@@ -93,7 +95,15 @@ class SignUp extends React.Component {
           <Button variant='success' onClick={this.handleSubmit}>
             Зарегистрироваться
           </Button>
-          { authError ? <p>{ authError }</p> : null }
+          { authError &&
+            <Overlay placement="right">
+              {props => (
+                <Tooltip id='overlay-example' {...props}>
+                  My Tooltip
+                </Tooltip>
+              )}
+            </Overlay>
+          }
         </Modal.Footer>
       </Modal>
     );

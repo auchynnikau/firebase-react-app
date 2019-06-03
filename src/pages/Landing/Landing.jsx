@@ -1,11 +1,8 @@
 import * as React from 'react';
-
-import { CarouselComponent } from '../../components';
+import { CarouselComponent } from '../../components/Carousel/Carousel';
 
 export const Landing = () => {
   return (
-    <React.Fragment>
-      <CarouselComponent />
-    </React.Fragment>
+    <CarouselComponent />
   );
 }

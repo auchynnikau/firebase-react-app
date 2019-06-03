@@ -12,10 +12,12 @@
     "react-redux-firebase": "^2.2.6",
     "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.1",
+    "react-yandex-maps": "^3.0.2",
     "redux": "^4.0.1",
     "redux-firestore": "^0.7.3",
     "redux-thunk": "^2.3.0",
-    "sass": "^1.20.1"
+    "sass": "^1.20.1",
+    "styled-components": "^4.2.1"
   },
   "scripts": {
     "start": "react-scripts start",
