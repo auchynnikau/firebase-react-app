@@ -1,74 +1,124 @@
 import * as React from 'react';
 import { Carousel } from 'react-bootstrap';
-import './Carousel.scss';
+
+import {
+  CarouselCaption,
+  CaptionWrapper,
+  Heading,
+  Description,
+  FirstItem,
+  SecondItem,
+  ThirdItem,
+  FourthItem,
+  FifthItem,
+  SixthItem,
+  SeventhItem,
+} from './styles';
 
 export const CarouselComponent = () => {
   return (
-    <Carousel className='carousel'>
-      <Carousel.Item className='carousel__item'>
-        <div className='carousel__first-item item item--background'></div>
-        <Carousel.Caption className='carousel__caption caption'>
-          <div className='caption__container container container--style'>
-            <h2 className='carousel__heading heading heading--second-style'>Mauris at</h2>
-            <h1 className='carousel__heading heading heading--style'>First slide label</h1>
-            <p className='carousel__description description description--style'>
-              Proin imperdiet leo ut mauris tempor consectetur in in massa.
-              Fusce euismod urna sit amet leo euismod egestas.
-            </p>
-          </div>
-        </Carousel.Caption>
+    <Carousel>
+      <Carousel.Item>
+        <FirstItem />
+        <CarouselCaption>
+          <CaptionWrapper>
+            <Heading>
+              Беларусь
+            </Heading>
+            <Description>
+              Страна с древней историей и богатыми традициями, с великолепной природой 
+              и удивительной архитектурой.
+            </Description>
+          </CaptionWrapper>
+        </CarouselCaption>
       </Carousel.Item>
-      <Carousel.Item className='carousel__item'>
-        <div className='carousel__second-item item item--background'></div>
-        <Carousel.Caption className='carousel__caption caption'>
-          <div className='caption__container container container--style'>
-            <h2 className='carousel__heading heading heading--second-style'>Mauris at</h2>
-            <h1 className='carousel__heading heading heading--style'>First slide label</h1>
-            <p className='carousel__description description description--style'>
-              Proin imperdiet leo ut mauris tempor consectetur in in massa.
-              Fusce euismod urna sit amet leo euismod egestas.
-            </p>
-          </div>
-        </Carousel.Caption>
+
+      <Carousel.Item>
+        <SecondItem />
+        <CarouselCaption>
+          <CaptionWrapper>
+            <Heading>
+              Минск
+            </Heading>
+            <Description>
+              Столица страны и просто современный город, который славится монументальной сталинской архитектурой. 
+            </Description>
+          </CaptionWrapper>
+        </CarouselCaption>
       </Carousel.Item>
-      <Carousel.Item className='carousel__item'>
-        <div className='carousel__third-item item item--background'></div>
-        <Carousel.Caption className='carousel__caption caption'>
-          <div className='caption__container container container--style'>
-            <h2 className='carousel__heading heading heading--second-style'>Mauris at</h2>
-            <h1 className='carousel__heading heading heading--style'>First slide label</h1>
-            <p className='carousel__description description description--style'>
-              Proin imperdiet leo ut mauris tempor consectetur in in massa.
-              Fusce euismod urna sit amet leo euismod egestas.
-            </p>
-          </div>
-        </Carousel.Caption>
+
+      <Carousel.Item>
+        <ThirdItem />
+        <CarouselCaption>
+          <CaptionWrapper>
+            <Heading>
+              Могилев
+            </Heading>
+            <Description>
+              Город на живописных берегах Днепра, который однажды чуть не стал столицей.
+            </Description>
+          </CaptionWrapper>
+        </CarouselCaption>
       </Carousel.Item>
-      <Carousel.Item className='carousel__item'>
-        <div className='carousel__fourth-item item item--background'></div>
-        <Carousel.Caption className='carousel__caption caption'>
-          <div className='caption__container container container--style'>
-            <h2 className='carousel__heading heading heading--second-style'>Mauris at</h2>
-            <h1 className='carousel__heading heading heading--style'>First slide label</h1>
-            <p className='carousel__description description description--style'>
-              Proin imperdiet leo ut mauris tempor consectetur in in massa.
-              Fusce euismod urna sit amet leo euismod egestas.
-            </p>
-          </div>
-        </Carousel.Caption>
+
+      <Carousel.Item>
+        <FourthItem />
+        <CarouselCaption>
+          <CaptionWrapper>
+            <Heading>
+              Витебск
+            </Heading>
+            <Description>
+              Один из немногих городов, который может похвастаться не только историческим наследием, 
+              но и богатыми традициями, которые испокон веков передаются из поколения в поколение.
+            </Description>
+          </CaptionWrapper>
+        </CarouselCaption>
       </Carousel.Item>
-      <Carousel.Item className='carousel__item'>
-        <div className='carousel__fifth-item item item--background'></div>
-        <Carousel.Caption className='carousel__caption caption'>
-          <div className='caption__container container container--style'>
-            <h2 className='carousel__heading heading heading--second-style'>Mauris at</h2>
-            <h1 className='carousel__heading heading heading--style'>First slide label</h1>
-            <p className='carousel__description description description--style'>
-              Proin imperdiet leo ut mauris tempor consectetur in in massa.
-              Fusce euismod urna sit amet leo euismod egestas.
-            </p>
-          </div>
-        </Carousel.Caption>
+
+      <Carousel.Item>
+        <FifthItem />
+        <CarouselCaption>
+          <CaptionWrapper>
+            <Heading>
+              Гомель
+            </Heading>
+            <Description>
+              Один из красивейших городов Беларуси, обладающий богатейшим историческим, 
+              культурным и научным потенциалом, имеющий свой неповторимый облик и стиль.
+            </Description>
+          </CaptionWrapper>
+        </CarouselCaption>
+      </Carousel.Item>
+
+      <Carousel.Item>
+        <SixthItem />
+        <CarouselCaption>
+          <CaptionWrapper>
+            <Heading>
+              Гродно
+            </Heading>
+            <Description>
+              Культурная столица Беларуси, столица беларусского католицизма, 
+              вторая столица Беларусской Народной Республики и третья столица Речи Посполитой
+            </Description>
+          </CaptionWrapper>
+        </CarouselCaption>
+      </Carousel.Item>
+
+      <Carousel.Item>
+        <SeventhItem />
+        <CarouselCaption>
+          <CaptionWrapper>
+            <Heading>
+              Брест
+            </Heading>
+            <Description>
+              Между Беловежской пущей и Брестской крепостью, на самой границе Беларуси и Польши, 
+              находится Брест – город с богатой и сложной историей.
+            </Description>
+          </CaptionWrapper>
+        </CarouselCaption>
       </Carousel.Item>
     </Carousel>
   );

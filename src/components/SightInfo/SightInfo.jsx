@@ -2,17 +2,52 @@ import * as React from 'react';
 import { connect } from 'react-redux';
 import { firestoreConnect } from 'react-redux-firebase';
 import { compose } from 'redux';
+import { Gallery } from '../Gallery/Gallery';
+import { YMaps, Placemark } from "react-yandex-maps";
+
+import {
+  Image,
+  HeadingWrapper,
+  Heading,
+  Content,
+  Title,
+  StyledMap,
+} from './styles.js';
 
 const SightInfo = (props) => {
   const { sight } = props;
 
   if (sight) {
     return (
-      <div>
-        <div>{sight.title}</div>
-        <div>{sight.content}</div>
-        <div>{sight.id}</div>
-      </div>
+      <section>
+        <Image src={sight.image}>
+          <HeadingWrapper>
+            <Heading>
+              {sight.title}
+            </Heading>
+          </HeadingWrapper>
+        </Image>
+        <Content>
+          {sight.content.map(paragraph =>
+            <p>
+              {paragraph}
+            </p>
+          )}
+        </Content>
+        <Gallery images={sight.images} />
+
+        <Content>
+          <Title>Карта местоположения</Title>
+        </Content>
+        <YMaps>
+          <StyledMap defaultState={{
+            center: sight.coordinates,
+            zoom: 15,
+          }}>
+            <Placemark geometry={sight.coordinates} />
+          </StyledMap>
+        </YMaps>
+      </section>
     );
   } else {
     return (

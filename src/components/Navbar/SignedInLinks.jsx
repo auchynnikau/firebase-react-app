@@ -5,7 +5,7 @@ import { signOut } from '../../store/actions/authActions';
 import AddSight from '../AddSight/AddSight';
 import './Navbar.scss';
 
-class SignedInLinks extends React.Component {
+export class SignedInLinks extends React.Component {
   constructor(props) {
     super(props);
 
@@ -23,7 +23,16 @@ class SignedInLinks extends React.Component {
   render() {
     return (
       <Nav>
-        <Button variant='outline-info' onClick={ this.addSightShow } className='nav__link link link--style'>Добавить</Button>
+        {
+          this.props.profile.initials === undefined &&
+            <Button
+              variant='outline-info'
+              onClick={ this.addSightShow }
+              className='nav__link link link--style'
+            >
+              Добавить
+            </Button>
+        }
         <Button variant='outline-success' onClick={ this.props.signOut } className='nav__link link link--style'>Выйти</Button>
         <Nav.Link className='nav__link link link--style'>
           { this.props.profile.initials }

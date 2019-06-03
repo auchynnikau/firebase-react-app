@@ -3,8 +3,9 @@ import { Nav, Button } from 'react-bootstrap';
 
 import SignUp from '../Auth/SignUp';
 import SignIn from '../Auth/SignIn';
-import './Navbar.scss';
 
+import './Navbar.scss';
+import './SignedOutLinks.scss';
 export class SignedOutLinks extends React.Component {
   constructor(props) {
     super(props);
@@ -31,7 +32,7 @@ export class SignedOutLinks extends React.Component {
       <React.Fragment>
         <Nav>
           <Button variant="outline-success" onClick={ this.signInShow }>Вход</Button>
-          <Button variant="outline-success" onClick={ this.signUpShow }>Регистрация</Button>
+          <Button className='register-btn' variant="outline-success" onClick={ this.signUpShow }>Регистрация</Button>
         </Nav>
         <SignIn
           isShown={ this.state.signInShown }
