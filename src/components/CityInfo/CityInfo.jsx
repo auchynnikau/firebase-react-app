@@ -16,21 +16,21 @@ import {
   StyledMap,
 } from './styles.js';
 
-const SightInfo = (props) => {
-  const { sight } = props;
+const CityInfo = (props) => {
+  const { city } = props;
 
-  if (sight) {
+  if (city) {
     return (
       <section>
-        <Image src={sight.image}>
+        <Image src={city.image}>
           <HeadingWrapper>
             <Heading>
-              {sight.title}
+              {city.title}
             </Heading>
           </HeadingWrapper>
         </Image>
         <Content>
-          {sight.content.map(item =>
+          {city.content.map(item =>
             <React.Fragment>
               <Title>{item.title}</Title>
               {item.paragraph.map(paragraph =>
@@ -39,16 +39,16 @@ const SightInfo = (props) => {
             </React.Fragment>
           )}
         </Content>
-        <Gallery images={sight.images} />
+        <Gallery images={city.images} />
         <MapTitle>
           <Title>Карта местоположения</Title>
         </MapTitle>
         <YMaps>
           <StyledMap defaultState={{
-            center: sight.coordinates,
-            zoom: 15,
+            center: city.coordinates,
+            zoom: 9,
           }}>
-            <Placemark geometry={sight.coordinates} />
+            <Placemark geometry={city.coordinates} />
           </StyledMap>
         </YMaps>
       </section>
@@ -62,17 +62,17 @@ const SightInfo = (props) => {
 
 const mapStateToProps = (state, ownProps) => {
   const id = ownProps.match.params.id;
-  const sights = state.firestore.data.sights;
-  const sight = sights ? sights[id] : null;
+  const cities = state.firestore.data.cities;
+  const city = cities ? cities[id] : null;
 
   return {
-    sight: sight
+    city: city
   }
 }
 
 export default compose(
   connect(mapStateToProps),
   firestoreConnect([{
-    collection: 'sights'
+    collection: 'cities'
   }])
-)(SightInfo);
+)(CityInfo);
