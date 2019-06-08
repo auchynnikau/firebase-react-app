@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { Modal, Button, Form } from 'react-bootstrap';
-import { signUp } from '../../store/actions/authActions';
-import { connect } from 'react-redux';
-import { Tooltip, Overlay } from 'react-bootstrap';
+import {Modal, Button, Form} from 'react-bootstrap';
+import {signUp} from '../../store/actions/authActions';
+import {connect} from 'react-redux';
+import {Alert} from 'react-bootstrap';
 
 export class SignUp extends React.Component {
   constructor(props) {
@@ -11,36 +11,54 @@ export class SignUp extends React.Component {
     this.state = {
       password: '',
       email: '',
-      firstName: '',
-      lastName: '',
+      firstName: 'Default',
+      lastName: 'Name',
     };
 
     this.emailInput = React.createRef();
     this.passwordInput = React.createRef();
-    this.firstNameInput = React.createRef();
     this.lastNameInput = React.createRef();
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
+    this.firstNameInput = React.createRef();
   }
 
-  handleChange(event) {
+  handleChange = event => {
     this.setState({
       [event.target.id]: event.target.value,
     })
   }
 
-  handleSubmit = (event) => {
-    console.log(this.props)
+  handleSubmit = event => {
     event.preventDefault();
     this.props.signUp(this.state);
   }
 
   render() {
-    const { authError } = this.props;
+    const {authError} = this.props;
+
+    const errors = {
+      error: [
+        'The email address is badly formatted.',
+        'The password must be 6 characters long or more.',
+        'Password should be at least 6 characters',
+        'There is no user record corresponding to this identifier. The user may have been deleted.',
+        'The password is invalid or the user does not have a password.',
+      ],
+
+      translate: [
+        `Адрес электронной почты неверно отформатирован.`,
+        `Пароль должен состоять из 6 или более символов.`,
+        `Пароль должен быть не менее 6 символов`,
+        `Нет записи пользователя, соответствующей этому адресу электронной почты.
+        Пользователь, возможно, был удален.`,
+        `Пароль неверен или у пользователя нет пароля.`,
+      ],
+    };
 
     return (
-      <Modal show={this.props.isShown} onHide={this.props.handleClose}>
+      <Modal
+        show={this.props.isShown}
+        onHide={this.props.handleClose}
+      >
         <Modal.Header closeButton>
           <Modal.Title>Регистрация</Modal.Title>
         </Modal.Header>
@@ -60,7 +78,7 @@ export class SignUp extends React.Component {
               <Form.Label>Фамилия</Form.Label>
               <Form.Control
                 id='lastName'
-                type='text'
+                type='password'
                 ref={this.lastInput}
                 onChange={this.handleChange}
                 placeholder='Введите свою фамилию'
@@ -86,24 +104,29 @@ export class SignUp extends React.Component {
                 placeholder='Придумайте пароль'
               />
             </Form.Group>
+            {authError &&
+              errors.error.map((error, id) =>
+                error === authError &&
+                <Alert variant='danger'>
+                  {errors.translate[id]}
+                </Alert>
+              )
+            }
           </Form>
         </Modal.Body>
         <Modal.Footer>
-          <Button variant='secondary' onClick={this.props.handleClose}>
+          <Button
+            variant='secondary'
+            onClick={this.props.handleClose}
+          >
             Закрыть
           </Button>
-          <Button variant='success' onClick={this.handleSubmit}>
+          <Button
+            variant='success'
+            onClick={this.handleSubmit}
+          >
             Зарегистрироваться
           </Button>
-          { authError &&
-            <Overlay placement="right">
-              {props => (
-                <Tooltip id='overlay-example' {...props}>
-                  My Tooltip
-                </Tooltip>
-              )}
-            </Overlay>
-          }
         </Modal.Footer>
       </Modal>
     );
@@ -111,15 +134,11 @@ export class SignUp extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  return {
-    authError: state.auth.authError
-  }
+  return {authError: state.auth.authError}
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return {
-    signUp: (newUser) => dispatch(signUp(newUser))
-  }
+  return {signUp: (newUser) => dispatch(signUp(newUser))}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignUp);

@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { Carousel } from 'react-bootstrap';
-import { Background } from './styles';
+import {Carousel} from 'react-bootstrap';
+import {Background} from './styles';
 
-export const Gallery = (props) => {
+export const Gallery = props => {
   return (
     <Carousel>
       {props.images.map((image, id) =>

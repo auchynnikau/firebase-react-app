@@ -1,5 +1,7 @@
 import styled from 'styled-components';
-import Jumbotron from 'react-bootstrap/Jumbotron';
+import * as palette from '../../styles/colors';
+import * as fonts from '../../styles/fonts';
+import {Jumbotron} from 'react-bootstrap';
 
 export const StyledJumbotron = styled(Jumbotron)`
   height: 30rem;
@@ -20,13 +22,17 @@ export const StyledJumbotron = styled(Jumbotron)`
 `;
 
 export const Title = styled.h1`
-  font-size: 1.8rem;
-  color: #ffffff;
+  font-size: ${fonts.medium};
+  color: ${palette.white};
 `;
 
 export const Description = styled.p`
-  font-size: 1.4rem;
   padding: 1rem 2rem;
-  color: #ffffff;
-  background: #000000ab;
+  font-size: ${fonts.small};
+  color: ${palette.white};
+  background: ${palette.opacityBlack};
+`;
+
+export const ButtonWrapper = styled.div`
+  width: max-content;
 `;

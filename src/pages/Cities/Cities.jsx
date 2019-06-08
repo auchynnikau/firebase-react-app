@@ -1,23 +1,34 @@
 import * as React from 'react';
-import { compose } from 'redux';
-import { connect } from 'react-redux';
-import { firestoreConnect } from 'react-redux-firebase';
+import {compose} from 'redux';
+import {connect} from 'react-redux';
+import {firestoreConnect} from 'react-redux-firebase';
 
-import { CitiesList } from '../../components/CitiesList/CitiesList';
+import {CityCard} from '../../components/CityCard/CityCard';
+
+import {
+  List,
+  StyledLink,
+} from './styles';
 
 export class Cities extends React.Component {
   render() {
-    const { cities } = this.props;
+    const {cities} = this.props;
 
     return (
-      <React.Fragment>
-        <CitiesList cities={ cities } />
-      </React.Fragment>
-    );
+      <List>
+        {cities && cities.map(city => {
+          return (
+            <StyledLink key={city.id} to={'/cities/' + city.id}>
+              <CityCard city={city} />
+            </StyledLink>
+          )
+        })}
+      </List>
+    )
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
     cities: state.firestore.ordered.cities,
     auth: state.firebase.auth,
@@ -26,5 +37,5 @@ const mapStateToProps = (state) => {
 
 export default compose(
   connect(mapStateToProps),
-  firestoreConnect([{ collection: 'cities' }]),
+  firestoreConnect([{collection: 'cities'}]),
 )(Cities);

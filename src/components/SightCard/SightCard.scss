@@ -1,25 +1,6 @@
-@import '../../styles/settings.scss';
-
-.sight-card {
-  &--style {
-    &:hover {
-      margin-top: -0.2rem;
-      box-shadow: 0.3rem 0.3rem 1rem rgb(161, 161, 161);
-      transition: all 300ms ease;
-    }
-  }
-
-  .title {
-    &--style {
-      font-size: 1.4rem;
-      color: black;
-    }
-  }
-
-  .text {
-    &--style {
-      color: black;
-    }
+#card {
+  &:hover {
+    box-shadow: 0.3rem 0.3rem 1rem rgb(161, 161, 161);
+    transition: all 300ms ease;
   }
 }
-

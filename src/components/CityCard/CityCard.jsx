@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { Link } from 'react-router-dom';
-import Button from 'react-bootstrap/Button';
+import {Button} from 'react-bootstrap';
 
 import {
   StyledJumbotron,
   Title,
   Description,
+  ButtonWrapper,
 } from './styles';
 
 export const CityCard = ({city}) => {
@@ -15,9 +15,9 @@ export const CityCard = ({city}) => {
       <Description>
         {city.description}
       </Description>
-      <p>
+      <ButtonWrapper>
         <Button variant='success'>Узнать больше</Button>
-      </p>
+      </ButtonWrapper>
     </StyledJumbotron>
   );
 }

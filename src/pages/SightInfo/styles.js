@@ -1,5 +1,7 @@
 import styled from 'styled-components';
-import { Map } from "react-yandex-maps";
+import * as fonts from '../../styles/fonts';
+import * as palette from '../../styles/colors';
+import {Map} from 'react-yandex-maps';
 
 export const Image = styled.div`
   width: 100%;
@@ -19,25 +21,25 @@ export const HeadingWrapper = styled.div`
   display: flex;
   align-items: flex-end;
   text-align: left;
-  background: linear-gradient(to top, #000000, transparent 100%);
+  background: linear-gradient(to top, ${palette.black}, transparent 100%);
 `;
 
 export const Heading = styled.h1`
   padding: 0 10%;
-  font-size: 4rem;
+  font-size: ${fonts.large};
   font-weight: 600;
-  color: #ffffff;
+  color: ${palette.white};
 `;
 
 export const Content = styled.div`
   padding: 5% 20%;
-  font-size: 1.4rem;
+  font-size: ${fonts.small};
 `;
 
 export const Title = styled.h2`
   margin-bottom: 2rem;
-  font-size: 2.4rem;
-  color: #000000;
+  font-size: ${fonts.big};
+  color: ${palette.black};
 
   :not(:first-child) {
     margin-top: 5rem;
@@ -45,8 +47,8 @@ export const Title = styled.h2`
 `;
 
 export const Paragraph = styled.p`
-  font-size: 1.4rem;
-  color: #000000;
+  font-size: ${fonts.small};
+  color: ${palette.black};
 `;
 
 export const MapTitle = styled(Content)`

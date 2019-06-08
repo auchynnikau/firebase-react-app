@@ -1,5 +1,6 @@
 {
   "name": "sightseeing-guide",
+  "author": "auchynnikau-viachaslau",
   "version": "0.1.0",
   "private": true,
   "dependencies": {

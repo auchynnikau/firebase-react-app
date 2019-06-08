@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { Modal, Button, Form } from 'react-bootstrap';
-import { connect } from 'react-redux';
-import { signIn } from '../../store/actions/authActions';
-import { Alert } from 'react-bootstrap';
+import {Modal, Button, Form} from 'react-bootstrap';
+import {connect} from 'react-redux';
+import {signIn} from '../../store/actions/authActions';
+import {Alert} from 'react-bootstrap';
 
 export class SignIn extends React.Component {
   constructor(props) {
@@ -15,26 +15,37 @@ export class SignIn extends React.Component {
 
     this.emailInput = React.createRef();
     this.passwordInput = React.createRef();
-
-    this.handleChange = this.handleChange.bind(this);
-    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange(event) {
+  handleChange = event => {
     this.setState({
       [event.target.id]: event.target.value,
     })
   }
 
-  handleSubmit(event) {
+  handleSubmit = event => {
     event.preventDefault();
     this.props.signIn(this.state);
   }
 
   render() {
-    const { authError } = this.props;
+    const {authError} = this.props;
 
-    console.log(this.props);
+    const errors = {
+      error: [
+        'The email address is badly formatted.',
+        'There is no user record corresponding to this identifier. The user may have been deleted.',
+        'The password is invalid or the user does not have a password.',
+      ],
+
+      translate: [
+        `Адрес электронной почты неверно отформатирован.`,
+        `Нет записи пользователя, соответствующей этому адресу электронной почты.
+        Пользователь, возможно, был удален.`,
+        `Пароль неверен или у пользователя нет пароля.`,
+      ],
+    };
+
     return (
       <Modal show={this.props.isShown} onHide={this.props.handleClose}>
         <Modal.Header closeButton>
@@ -62,7 +73,14 @@ export class SignIn extends React.Component {
                 placeholder='Введите пароль'
               />
             </Form.Group>
-            { authError && <Alert variant='danger'>Неверный пароль!</Alert> }
+            {authError &&
+              errors.error.map((error, id) =>
+                error === authError &&
+                <Alert variant='danger'>
+                  {errors.translate[id]}
+                </Alert>
+              )
+            }
           </Form>
         </Modal.Body>
         <Modal.Footer>
@@ -79,15 +97,11 @@ export class SignIn extends React.Component {
 }
 
 const mapStateToProps = (state) => {
-  return {
-    authError: state.auth.authError,
-  }
+  return {authError: state.auth.authError}
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return {
-    signIn: (creds) => dispatch(signIn(creds)),
-  }
+  return {signIn: (creds) => dispatch(signIn(creds))}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
