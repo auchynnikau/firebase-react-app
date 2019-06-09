@@ -1,9 +1,9 @@
 import * as React from 'react';
 import * as fonts from '../../styles/fonts';
 
+import {connect} from 'react-redux';
 import {Link} from 'react-router-dom';
 import {Navbar, Nav} from 'react-bootstrap';
-import {connect} from 'react-redux';
 
 import logo from '../../assets/icons/logo.svg';
 import SignedInLinks from './SignedInLinks';
@@ -15,6 +15,7 @@ import {
   CollapseContainer,
   NavForm,
 } from './styles';
+import './styles.scss';
 
 export const NavbarComponent = props => {
   const {auth, profile} = props;
@@ -28,10 +29,10 @@ export const NavbarComponent = props => {
       <Navbar.Collapse id='navbar-collapse'>
         <CollapseContainer>
           <Nav style={linkStyle}>
-            <Nav.Link as={Link} to='/'>На главную</Nav.Link>
-            <Nav.Link as={Link} to='/cities'>Города</Nav.Link>
-            <Nav.Link as={Link} to='/sights'>Достопримечательности</Nav.Link>
-            <Nav.Link as={Link} to='/about'>О сайте</Nav.Link>
+            <Nav.Link className='link' as={Link} to='/'>На главную</Nav.Link>
+            <Nav.Link className='link' as={Link} to='/cities'>Города</Nav.Link>
+            <Nav.Link className='link' as={Link} to='/regions'>Достопримечательности</Nav.Link>
+            <Nav.Link className='link' as={Link} to='/about'>О сайте</Nav.Link>
           </Nav>
           <NavForm>{links}</NavForm>
         </CollapseContainer>

@@ -1,9 +1,8 @@
 import * as React from 'react';
-import {Nav, Button} from 'react-bootstrap';
-
+import {Button} from 'react-bootstrap';
 import SignUp from '../Auth/SignUp';
 import SignIn from '../Auth/SignIn';
-import {SignButton} from './styles';
+import {SignButton, AuthForm} from './styles';
 
 export class SignedOutLinks extends React.Component {
   constructor(props) {
@@ -20,15 +19,15 @@ export class SignedOutLinks extends React.Component {
     this.signUpClose = this.signUpClose.bind(this);
   }
 
-  signInShow() {this.setState({signInShown: true})}
-  signUpShow() {this.setState({signUpShown: true})}
-  signInClose() {this.setState({signInShown: false})}
-  signUpClose() {this.setState({signUpShown: false})}
+  signInShow() {this.setState({signInShown: true})};
+  signUpShow() {this.setState({signUpShown: true})};
+  signInClose() {this.setState({signInShown: false})};
+  signUpClose() {this.setState({signUpShown: false})};
 
   render() {
     return (
       <React.Fragment>
-        <Nav>
+        <AuthForm>
           <Button
             variant='outline-success'
             onClick={this.signInShow}
@@ -41,7 +40,7 @@ export class SignedOutLinks extends React.Component {
           >
             Регистрация
           </SignButton>
-        </Nav>
+        </AuthForm>
         <SignIn
           handleShow={this.signInShow}
           handleClose={this.signInClose}

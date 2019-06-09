@@ -1,3 +1,4 @@
+export const extraSmall = '1rem';
 export const small = '1.4rem';
 export const normal = '1.6rem';
 export const medium = '1.8rem';

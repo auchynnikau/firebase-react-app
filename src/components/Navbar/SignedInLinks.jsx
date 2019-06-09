@@ -1,12 +1,7 @@
 import * as React from 'react';
 import {connect} from 'react-redux';
 import {signOut} from '../../store/actions/authActions';
-
-import {
-  ProfileNav,
-  SignButton,
-  Initials,
-} from './styles';
+import {ProfileNav, SignButton, Initials} from './styles';
 
 export class SignedInLinks extends React.Component {
   render() {

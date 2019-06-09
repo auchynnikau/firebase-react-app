@@ -29,11 +29,18 @@ export const Heading = styled.h1`
   font-size: ${fonts.large};
   font-weight: 600;
   color: ${palette.white};
+
+  @media (max-width: 767px) {
+    font-size: ${fonts.big};
+    padding: 0;
+  };
 `;
 
 export const Content = styled.div`
   padding: 5% 20%;
   font-size: ${fonts.small};
+
+  @media (max-width: 767px) {padding: 5%};
 `;
 
 export const Title = styled.h2`
@@ -41,9 +48,8 @@ export const Title = styled.h2`
   font-size: ${fonts.big};
   color: ${palette.black};
 
-  :not(:first-child) {
-    margin-top: 5rem;
-  }
+  :not(:first-child) {margin-top: 5rem};
+  @media (max-width: 767px) {font-size: ${fonts.medium}};
 `;
 
 export const Paragraph = styled.p`

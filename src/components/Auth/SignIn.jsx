@@ -1,8 +1,7 @@
 import * as React from 'react';
-import {Modal, Button, Form} from 'react-bootstrap';
 import {connect} from 'react-redux';
 import {signIn} from '../../store/actions/authActions';
-import {Alert} from 'react-bootstrap';
+import {Alert, Modal, Button, Form} from 'react-bootstrap';
 
 export class SignIn extends React.Component {
   constructor(props) {
@@ -53,7 +52,7 @@ export class SignIn extends React.Component {
         </Modal.Header>
         <Modal.Body>
           <Form>
-            <Form.Group onChange={this.handleChange}>
+            <Form.Group>
               <Form.Label>Email</Form.Label>
               <Form.Control
                 id='email'
@@ -96,12 +95,12 @@ export class SignIn extends React.Component {
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {authError: state.auth.authError}
 }
 
-const mapDispatchToProps = (dispatch) => {
-  return {signIn: (creds) => dispatch(signIn(creds))}
+const mapDispatchToProps = dispatch => {
+  return {signIn: creds => dispatch(signIn(creds))}
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignIn);

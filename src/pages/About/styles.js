@@ -33,6 +33,8 @@ export const Heading = styled.h1`
 export const Content = styled.div`
   padding: 5% 20%;
   font-size: ${fonts.small};
+
+  @media (max-width: 767px) {padding: 5%};
 `;
 
 export const Title = styled.h2`
@@ -46,6 +48,7 @@ export const Title = styled.h2`
 `;
 
 export const Paragraph = styled.p`
+  margin: 0;
   font-size: ${fonts.small};
   color: ${palette.black};
 `;
@@ -78,6 +81,4 @@ export const Item = styled.div`
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-
-  p {margin: 0;}
 `;

@@ -2,15 +2,12 @@ import * as React from 'react';
 import {compose} from 'redux';
 import {connect} from 'react-redux';
 import {firestoreConnect} from 'react-redux-firebase';
-
 import {CityCard} from '../../components/CityCard/CityCard';
-
-import {
-  List,
-  StyledLink,
-} from './styles';
+import {List, StyledLink} from './styles';
 
 export class Cities extends React.Component {
+  componentDidMount() {window.scrollTo(0, 0)}
+
   render() {
     const {cities} = this.props;
 

@@ -1,8 +1,7 @@
 import * as React from 'react';
-import {Modal, Button, Form} from 'react-bootstrap';
-import {signUp} from '../../store/actions/authActions';
 import {connect} from 'react-redux';
-import {Alert} from 'react-bootstrap';
+import {signUp} from '../../store/actions/authActions';
+import {Alert, Modal, Button, Form} from 'react-bootstrap';
 
 export class SignUp extends React.Component {
   constructor(props) {
@@ -11,8 +10,9 @@ export class SignUp extends React.Component {
     this.state = {
       password: '',
       email: '',
-      firstName: 'Default',
-      lastName: 'Name',
+      firstName: '',
+      lastName: '',
+      userNameError: '',
     };
 
     this.emailInput = React.createRef();
@@ -29,7 +29,14 @@ export class SignUp extends React.Component {
 
   handleSubmit = event => {
     event.preventDefault();
-    this.props.signUp(this.state);
+
+    this.state.firstName.length === 0 ||
+    this.state.lastName.length === 0 ?
+      this.setState({
+        userNameError: 'Заполните поля Имя и Фамилия.'
+      })
+    :
+      this.props.signUp(this.state);
   }
 
   render() {
@@ -64,7 +71,7 @@ export class SignUp extends React.Component {
         </Modal.Header>
         <Modal.Body>
           <Form>
-            <Form.Group onChange={this.handleChange}>
+            <Form.Group>
               <Form.Label>Имя</Form.Label>
               <Form.Control
                 id='firstName'
@@ -74,17 +81,17 @@ export class SignUp extends React.Component {
                 placeholder='Введите свое имя'
               />
             </Form.Group>
-            <Form.Group onChange={this.handleChange}>
+            <Form.Group>
               <Form.Label>Фамилия</Form.Label>
               <Form.Control
                 id='lastName'
-                type='password'
+                type='text'
                 ref={this.lastInput}
                 onChange={this.handleChange}
                 placeholder='Введите свою фамилию'
               />
             </Form.Group>
-            <Form.Group onChange={this.handleChange}>
+            <Form.Group>
               <Form.Label>Email</Form.Label>
               <Form.Control
                 id='email'
@@ -104,13 +111,20 @@ export class SignUp extends React.Component {
                 placeholder='Придумайте пароль'
               />
             </Form.Group>
-            {authError &&
-              errors.error.map((error, id) =>
-                error === authError &&
-                <Alert variant='danger'>
-                  {errors.translate[id]}
-                </Alert>
-              )
+            {authError ?
+                errors.error.map((error, id) =>
+                  error === authError &&
+                  <Alert variant='danger'>
+                    {errors.translate[id]}
+                  </Alert>
+                )
+              :
+                (this.state.firstName.length === 0 ||
+                this.state.lastName.length === 0) &&
+                  this.state.userNameError &&
+                  <Alert variant='danger'>
+                    {this.state.userNameError}
+                  </Alert>
             }
           </Form>
         </Modal.Body>

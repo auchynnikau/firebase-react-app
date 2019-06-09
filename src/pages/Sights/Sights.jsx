@@ -1,34 +1,27 @@
 import * as React from 'react';
 import {compose} from 'redux';
 import {connect} from 'react-redux';
-import {firestoreConnect} from 'react-redux-firebase';
 import {Link} from 'react-router-dom';
+import {firestoreConnect} from 'react-redux-firebase';
 
 import {SightCard} from '../../components/SightCard/SightCard';
 import {Columns} from './styles';
 
 export class Sights extends React.Component {
+  componentDidMount() {window.scrollTo(0, 0)}
+
   render() {
     const {sights} = this.props;
+    const region = this.props.match.params.region;
 
     return (
       <Columns>
-        {sights && sights.map(sight => {
-          return (
-            <Link key={sight.id} to={'/sights/' + sight.id}>
-              <SightCard sight={sight} />
-            </Link>
-          )
-        })}
-
-        {/* <div>
-          {sights && sights.map(sight =>
-            sight.region === 'minsk' &&
-            <Link key={ sight.id } to={ '/sights/' + sight.id }>
-              <SightCard sight={ sight } />
-            </Link>
-          )}
-        </div> */}
+        {sights && sights.map(sight =>
+          sight.region === region &&
+          <Link key={sight.id} to={`/sights/${region}/` + sight.id}>
+            <SightCard sight={sight} />
+          </Link>
+        )}
       </Columns>
     )
   }

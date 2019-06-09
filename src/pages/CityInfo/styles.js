@@ -34,6 +34,8 @@ export const Heading = styled.h1`
 export const Content = styled.div`
   padding: 5% 20%;
   font-size: ${fonts.small};
+
+  @media (max-width: 767px) {padding: 5%};
 `;
 
 export const Title = styled.h2`

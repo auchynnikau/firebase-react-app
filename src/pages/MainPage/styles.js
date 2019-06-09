@@ -14,6 +14,7 @@ export const CaptionWrapper= styled.div`
   width: 75%;
   margin: 0;
   padding: 1.6rem;
+  box-sizing: content-box;
   background: ${palette.opacityBlack};
   text-align: left;
 `;
@@ -22,11 +23,15 @@ export const Heading = styled.h1`
   font-size: ${fonts.huge};
   font-weight: 600;
   color: ${palette.white};
+
+  @media (max-width: 700px) {font-size: ${fonts.big}};
 `;
 
 export const Description = styled.p`
   font-size: ${fonts.medium};
   color: ${palette.white};
+
+  @media (max-width: 70rem) {font-size: ${fonts.extraSmall}};
 `;
 
 export const Background = styled.div`
