@@ -4,7 +4,10 @@ import SignUp from '../Auth/SignUp';
 import SignIn from '../Auth/SignIn';
 import {SignButton, AuthForm} from './styles';
 
-export class SignedOutLinks extends React.Component {
+import {connect} from 'react-redux';
+import {closeForm} from '../../store/actions/authActions';
+
+class SignedOutLinks extends React.Component {
   constructor(props) {
     super(props);
 
@@ -21,8 +24,14 @@ export class SignedOutLinks extends React.Component {
 
   signInShow() {this.setState({signInShown: true})};
   signUpShow() {this.setState({signUpShown: true})};
-  signInClose() {this.setState({signInShown: false})};
-  signUpClose() {this.setState({signUpShown: false})};
+  signInClose() {
+    this.setState({signInShown: false});
+    this.props.closeForm();
+  };
+  signUpClose() {
+    this.setState({signUpShown: false});
+    this.props.closeForm();
+  };
 
   render() {
     return (
@@ -55,3 +64,9 @@ export class SignedOutLinks extends React.Component {
     );
   }
 }
+
+const mapDispatchToProps = dispatch => ({
+  closeForm: () => dispatch(closeForm()),
+});
+
+export default connect(null, mapDispatchToProps)(SignedOutLinks);

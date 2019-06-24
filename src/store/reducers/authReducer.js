@@ -23,9 +23,13 @@ export const authReducer = (state = initState, action) => {
       return {
         ...state,
         authError: action.error.message,
-      }
+      };
     case 'SIGNOUT_SUCCESS':
       return state;
+    case 'FORM_CLOSE':
+      return {
+        authError: null,
+      };
     default: return state;
   }
 }

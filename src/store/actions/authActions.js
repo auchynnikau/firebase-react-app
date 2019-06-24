@@ -44,3 +44,7 @@ export const signUp = newUser => {
     })
   }
 }
+
+export const closeForm = () => ({
+  type: 'FORM_CLOSE'
+});

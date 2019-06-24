@@ -7,7 +7,7 @@ import {Navbar, Nav} from 'react-bootstrap';
 
 import logo from '../../assets/icons/logo.svg';
 import SignedInLinks from './SignedInLinks';
-import {SignedOutLinks} from './SignedOutLinks';
+import SignedOutLinks from './SignedOutLinks';
 
 import {
   NavMenu,
